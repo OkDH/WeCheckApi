@@ -23,7 +23,7 @@ public class UserController {
 	private Map<String, Object> getList(){
 		Map<String, Object> result = new HashMap<>();
 		result.put("data", userMapper.getList());
-		result.put("name", "옥동현");
+		result.put("name", "옥동현2");
 		return result;
 	}
 	
