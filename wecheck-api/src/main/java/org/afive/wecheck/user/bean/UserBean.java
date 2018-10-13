@@ -10,8 +10,8 @@ public class UserBean {
 	private int userType;
 	private String firstName;
 	private String lastName;
-	private int region;
-	private Date birtyDay;
+	private int regionID;
+	private Date birthDay;
 	private String profileImage;
 	
 	public int getUserID() {
@@ -50,17 +50,17 @@ public class UserBean {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public int getRegion() {
-		return region;
+	public int getRegionID() {
+		return regionID;
 	}
-	public void setRegion(int region) {
-		this.region = region;
+	public void setRegionID(int regionID) {
+		this.regionID = regionID;
 	}
-	public Date getBirtyDay() {
-		return birtyDay;
+	public Date getBirthDay() {
+		return birthDay;
 	}
-	public void setBirtyDay(Date birtyDay) {
-		this.birtyDay = birtyDay;
+	public void setBirthDay(Date birthDay) {
+		this.birthDay = birthDay;
 	}
 	public String getProfileImage() {
 		return profileImage;
