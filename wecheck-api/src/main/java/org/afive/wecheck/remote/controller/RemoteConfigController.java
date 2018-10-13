@@ -1,6 +1,9 @@
 package org.afive.wecheck.remote.controller;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.afive.wecheck.remote.bean.RemoteConfigBean;
 import org.afive.wecheck.remote.mapper.RemoteConfigMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,13 @@ public class RemoteConfigController {
 
 	@Autowired
 	private RemoteConfigMapper remoteConfigMapper;
+	
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	private Map<String, Object> getList(){
+		Map<String, Object> result = new HashMap<>();
+		result.put("data", remoteConfigMapper.getList());
+		return result;
+	}
 	
 	@RequestMapping(value = "/{parameterKey}", method = RequestMethod.GET)
 	private RemoteConfigBean get(@PathVariable(value = "parameterKey") String parameterKey){

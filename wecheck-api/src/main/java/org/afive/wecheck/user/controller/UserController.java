@@ -23,7 +23,6 @@ public class UserController {
 	private Map<String, Object> getList(){
 		Map<String, Object> result = new HashMap<>();
 		result.put("data", userMapper.getList());
-		result.put("name", "옥동현2");
 		return result;
 	}
 	
@@ -33,18 +32,30 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	private void register(UserBean userBean){
-		userMapper.register(userBean);
+	private UserBean register(UserBean userLoginBean){
+		UserBean userBean = userMapper.getLoginUserBean(userLoginBean);
+		if(userBean != null) {
+			return userBean;
+		} else {
+			userMapper.register(userLoginBean);
+			return userMapper.get(String.valueOf(userLoginBean.getUserID()));
+		}
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.PUT)
 	private void update(UserBean userBean){
+		
+		if(userBean.getUserType()==0) userBean.setUserType(1);
+		
 		userMapper.update(userBean);
+
 	}
 	
 	@RequestMapping(value = "/{userID}", method = RequestMethod.DELETE)
 	private void delete(@PathVariable(value = "userID") String userID){
 		userMapper.delete(userID);
 	}
+	
+	
 	
 }

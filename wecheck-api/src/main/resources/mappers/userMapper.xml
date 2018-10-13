@@ -15,11 +15,18 @@
   		WHERE	userID = #{userID};
     </select>
     
-    <insert id="register" parameterType="org.afive.wecheck.user.bean.UserBean">
+    <select id="getLoginUserBean" parameterType="String" resultType="org.afive.wecheck.user.bean.UserBean">
+    	SELECT	*
+    	FROM	user
+  		WHERE	snsType = #{snsType}
+  		AND		snsID = #{snsID};
+    </select>
+    
+    <insert id="register" parameterType="org.afive.wecheck.user.bean.UserBean" useGeneratedKeys="true" keyProperty="userID">
     	INSERT INTO user 
-    		(snsType, snsID, userType, firstName, lastName, regionID, birthDay, profileImage)
+    		(snsType, snsID)
     	VALUES
-    		(#{snsType}, #{snsID}, #{userType}, #{firstName}, #{lastName}, #{regionID}, #{birthDay}, #{profileImage})
+    		(#{snsType}, #{snsID})
     </insert>
     
     <update id="update" parameterType="org.afive.wecheck.user.bean.UserBean">
